@@ -107,6 +107,7 @@ class SimRocketEnv(gym.Env):
         """
         Gym interface. Reset the simulation.
         :return state (state vector), info dict.
+        Domain Randomisation is implemented here
         """
         np.random.seed(seed)
 
