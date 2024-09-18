@@ -6,4 +6,4 @@ img/tmp
 build/
 pyrocketcraft.egg-info/
 expert_data.json
-acados
+acados/
