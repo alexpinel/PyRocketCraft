@@ -131,3 +131,9 @@ Info
 ----
 
 2023-2024 Jan Zwiener. Free to use for academic research if this work is cited and linked. Contact author for commercial use.
+
+Modifications
+----
+
+*Domain Randomisation*: This can be found in domain_randomisation.py 
+

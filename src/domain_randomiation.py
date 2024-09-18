@@ -9,10 +9,6 @@ class DomainRandomisation:
                 'range': (4.9, 14.7),
                 'type': 'uniform'
             },
-            'mass_scale': {
-                'range': (0.8, 1.2),
-                'type': 'uniform'
-            },
             'thrust_max_n': {
                 'range': (1200, 1800),
                 'type': 'uniform'
