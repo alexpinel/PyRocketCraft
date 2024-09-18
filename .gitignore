@@ -5,3 +5,4 @@ img/tmp
 *.json
 build/
 pyrocketcraft.egg-info/
+expert_data.json
