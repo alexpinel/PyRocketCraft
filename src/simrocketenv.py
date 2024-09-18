@@ -14,6 +14,8 @@ import pybullet as p
 import pybullet_data
 from geodetic_toolbox import quat_from_rpy, quat_to_matrix, quat_to_rpy, quat_invert
 
+from domain_randomisation import DomainRandomisation
+
 class SimRocketEnv(gym.Env):
     """
     Rocket simulation environment (physics simulation) with an
@@ -48,7 +50,7 @@ class SimRocketEnv(gym.Env):
         self.THRUST_VECTOR_TAU = 0.3
         self.THRUST_MAX_ANGLE = np.deg2rad(5.0)
         self.ATT_MAX_THRUST = 0.0 # attitude thruster: max. thrust in Newton
-        self.GRAVITY = 9.81 # assume we want to land on Earth
+        self.GRAVITY = 9.81 # assume we want to land on Earth, this be changed in the DR
         self.mass_kg = -99999999.9 # will be loaded and updated from URDF
         self.MIN_GROUND_DIST_M = 0.50 # shut off engine below this altitude
         # OFFSET between CoG and nozzle. Is there a way to get this from URDF?
@@ -86,6 +88,9 @@ class SimRocketEnv(gym.Env):
         self.observation_space = spaces.Box(low=-np.float32(obs_hi),
                                             high=np.float32(obs_hi),
                                             dtype=np.float32)
+        
+        # Add this to create an instance of DomainRandomisation
+        self.domain_rand = DomainRandomisation()
 
     def _pybullet_setup_environment(self):
         """
@@ -111,6 +116,10 @@ class SimRocketEnv(gym.Env):
         """
         np.random.seed(seed)
 
+        # Randomize gravity
+        self.GRAVITY = self.domain_rand.get_randomized_value('gravity')
+        p.setGravity(0, 0, -self.GRAVITY, physicsClientId=self.CLIENT)
+        
         self.engine_on = True
         # <state>
         self.pos_n = np.array([np.random.uniform(-50.0, 50.0),
