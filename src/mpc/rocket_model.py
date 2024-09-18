@@ -21,13 +21,13 @@ def export_rocket_ode_model() -> AcadosModel:
     THRUST_MAX_N = 1800.0 # 8500.0
     THRUST_TAU = 2.5
     THRUST_VECTOR_TAU = 0.3
-    THRUST_MAX_ANGLE = np.deg2rad(10.0)
-    ATT_MAX_THRUST = 50.0
+    THRUST_MAX_ANGLE = np.deg2rad(5.0)
+    ATT_MAX_THRUST = 0.0
 
     # position of booster relative to CoG
     booster_pos_forward = 0.0
     booster_pos_left    = 0.0
-    booster_pos_up      = -2.0
+    booster_pos_up      = -1.0
 
     att_x_booster_pos_forward = 0.0
     att_x_booster_pos_left    = 0.0

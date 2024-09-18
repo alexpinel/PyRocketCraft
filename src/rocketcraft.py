@@ -40,7 +40,7 @@ def ctrl_thread_func(initial_state):
     # Switch between policies here:
     # -----------------------------
 
-    # policy = MPCPolicy(initial_state)
+    #policy = MPCPolicy(initial_state)
     policy = NNPolicy()
     # policy = PPOPolicy()
 

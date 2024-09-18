@@ -46,13 +46,13 @@ class SimRocketEnv(gym.Env):
         self.THRUST_MAX_N = 1500.0 # max. thrust in Newton from main engine
         self.THRUST_TAU = 2.5 # PT1 first order delay in thrust response
         self.THRUST_VECTOR_TAU = 0.3
-        self.THRUST_MAX_ANGLE = np.deg2rad(10.0)
-        self.ATT_MAX_THRUST = 50.0 # attitude thruster: max. thrust in Newton
+        self.THRUST_MAX_ANGLE = np.deg2rad(5.0)
+        self.ATT_MAX_THRUST = 0.0 # attitude thruster: max. thrust in Newton
         self.GRAVITY = 9.81 # assume we want to land on Earth
         self.mass_kg = -99999999.9 # will be loaded and updated from URDF
-        self.MIN_GROUND_DIST_M = 2.45 # shut off engine below this altitude
+        self.MIN_GROUND_DIST_M = 0.50 # shut off engine below this altitude
         # OFFSET between CoG and nozzle. Is there a way to get this from URDF?
-        self.NOZZLE_OFFSET = -2.0
+        self.NOZZLE_OFFSET = -1.0
         self.ATT_THRUSTER_OFFSET = 2.0
         self.scale_obs_space = scale_obs_space
         # </vehicle specific>
@@ -274,6 +274,7 @@ class SimRocketEnv(gym.Env):
                             thrust_vec_line[2]-2.0]
         thrust_color = [1.0, 0.0, 0.0]
         thrust_line_width = 6.0
+        
         if self.interactive:
             if self.debug_line_thrust == -1:
                 self.debug_line_thrust = p.addUserDebugLine(thrust_start_point,

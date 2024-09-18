@@ -7,3 +7,5 @@ else
 fi
 export ACADOS_SOURCE_DIR="$CURRENT_SCRIPT_DIR/acados"
 source venv_pyrocketcraft/bin/activate
+
+python "$CURRENT_SCRIPT_DIR/src/rocketcraft.py"

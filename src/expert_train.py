@@ -33,9 +33,9 @@ def train_and_evaluate():
 
     INPUT_FILE = "expert_data.json"
     OUTPUT_FILE = "torch_nn_mpc-rocket-v3.pth"
-    BATCH_SIZE = 64
+    BATCH_SIZE = 128
     LEARNING_RATE = 0.0005
-    EPOCHS = 100
+    EPOCHS = 200
     SEED = 16
     VAL_PERCENTAGE = 0.05
     WEIGHT_DECAY = 0.01
